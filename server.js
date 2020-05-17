@@ -2,9 +2,24 @@ const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 
+// Load ENV
+dotenv.config({ path: './config.env'});
+
 const app = express();
 
-app.listen( 5000, () => {
-    console.log('App listening to port 5000');
+// dev logging
+if(process.env.NODE_ENV === 'development'){
+    app.use(morgan('dev'));
+}
+
+// profile route
+app.use('/api/v1/profile', require('./routes/profile'));
+
+const port = process.env.PORT || 8000;
+
+
+
+app.listen( port, () => {
+    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`);
     
 });
