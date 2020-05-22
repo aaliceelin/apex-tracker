@@ -6,23 +6,39 @@
             <router-link to="/">Go Back</router-link>    
         </div>
         <div v-if="profileData" class="container">
-            <h1 class="gamertag">
-                <img :src="profileData.platformInfo.avatarUrl" alt="" class="platform-avatar">
-                {{profileData.platformInfo.platformUserId}}
-            </h1>
+            <div class="top-card">
+            <div class="gamertag">
+                <img :src="profileData.platformInfo.avatarUrl" alt="" class="icon">
+                <h1>{{profileData.platformInfo.platformUserId}}</h1>
+            </div>
+            <div class="rank">
+                <img :src="profileData.segments[0].stats.rankScore.metadata.iconUrl" alt="" class="icon">
+                <h2> {{profileData.segments[0].stats.rankScore.metadata.rankName}}</h2>
+            </div>
+            <div class="stats">
+                <ul>
+                    <li><h3>Level: {{profileData.segments[0].stats.level.value}}</h3></li>
+                    <li><h3>Lifetime kills: {{profileData.segments[0].stats.kills.value}}</h3></li>
+                    <li><h3>Times placed top 3: {{profileData.segments[0].stats.timesPlacedtop3.value}}</h3></li>
+                </ul>
+
+                
+                
+            </div>
+            </div>
             <div class="grid">
-                <div>
+                <div class="img-item">
                     <img :src="profileData.segments[1].metadata.imageUrl" alt="" class="legend-avatar">
                 </div>
                 <div>
                     <ul>
-                        <li><h3>Selected Legend: </h3>
+                        <li  class="item"><h3>Selected Legend: </h3>
                         <p>{{profileData.metadata.activeLegendName}}</p>
                         </li>
-                        <li><h3>Kills: </h3>
+                        <li  class="item"><h3>Kills: </h3>
                         <p>{{profileData.segments[1].stats.kills.value}}</p>
                         </li>
-                        <li><h3>Winning kills: </h3>
+                        <li  class="item"><h3>Winning kills: </h3>
                         <p>{{profileData.segments[1].stats.winningKills.value}}</p>
                         </li>
 
@@ -64,20 +80,41 @@ export default  {
 }
 </script>
 <style>
-.platform-avatar {
+.icon{
     max-width: 100px;
 }
-
-.grid {
-    display: flex;
-    justify-content: space-between;
+.top-card {
+    display: grid;
+    grid-template-columns: auto auto auto;
     border: 2px solid white;
 }
-.grid > div {
-    border: 1px solid grey;
+.top-card > div {
+    justify-self: center;
+
+
+}
+.grid {
+    display: grid;
+    border: 2px solid white;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto ;
+}
+
+
+.img-item{
+    background: rgba(0, 0, 0, 0.5);
+    border-right: 2px solid white;
+
 }
 .legend-avatar {
     max-width: 400px;
+}
+ul {
+
+}
+li {
+
+
 }
 
 </style>
