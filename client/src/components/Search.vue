@@ -22,61 +22,36 @@
 </template>
 <script>
 // JS
-export default  {
-    name: 'Search',
-    data(){
-        return{
-            platform: "psn",
-            gamertag: ""
-        };
-    },
-    beforeCreate(){
-          document.body.className = "body-bg-img"  
-    },
-    methods: {
-        onSubmit(){
-            if(!this.gamertag){
-                this.$toasted.show("Please Enter a Gamertag", {
-                    duration: 3000,
-                    icon: 'exclamation-circle',
-                    position: 'top-center'
-                });
-            } else {
-                this.$router.push(`/profile/${this.platform}/${this.gamertag}`)
-            }
-        }
+export default {
+  name: "Search",
+  data() {
+    return {
+      platform: "psn",
+      gamertag: ""
+    };
+  },
+  beforeCreate() {
+    document.body.className = "body-bg-image";
+  },
+  methods: {
+    onSubmit() {
+      if (!this.gamertag) {
+        this.$toasted.show("Please enter a gamertag", {
+          duration: 3000,
+          icon: "exclamation-circle",
+          position: 'top-center'
+        });
+      } else {
+        this.$router.push(`/profile/${this.platform}/${this.gamertag}`);
+      }
     }
-}
+  }
+};
 </script>
 <style >
-.form-group {
-  margin: 1rem 0;
+.form-group > input {
+  border: 2px solid #fff;
 }
 
-.search {
-  background: rgba(0, 0, 0, 0.5);
 
-
-
-}
-input,
-select,
-textarea {
-  display: block;
-  width: 100%;
-  padding: 0.4rem;
-  font-size: 1.2rem;
-  border: 1px solid #ccc;
-}
-*/
-.btn {
-  display: inline-block;
-  background: var(--primary-color);
-  color: #fff;
-  padding: 0.4rem 1.3rem;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  margin-top: 1rem;
-}
 </style>

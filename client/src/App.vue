@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container .body-bg-img">
     <Header/>
     <router-view/>
 </div>
@@ -38,22 +38,42 @@ a {
 ul {
   list-style: none;
 }
-.body-bg-no-img{
+.body-bg-no-image {
   background: var(--primary-color);
 }
-.body-bg-img{
-  background: var(--primary-color) url('/.assets/mirage.png') no-repeat top center;
+.body-bg-image {
+  background: var(--primary-color) url("./assets/pathy.png") no-repeat top
+    center;
 }
-
 .container {
-  max-width: 1000px;
-  margin: auto;
+  max-width: 960px;
+  margin: 1rem auto;
   overflow: auto;
   padding: 0 2rem;
 }
+.form-group {
+  margin: 1rem 0;
+}
 
-
-
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+}
+.btn {
+  display: inline-block;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 0.4rem 1.3rem;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin-top: 1rem;
+}
 @media (max-width: 700px) {
   body {
     background: var(--primary-color);
