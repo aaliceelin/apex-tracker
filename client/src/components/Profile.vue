@@ -11,7 +11,7 @@
     </div>
     <div id="popup">
       <div class="grid">
-        <div v-if="profileData.segments[0].stats.rankScore">
+        <div id="ranked" v-if="profileData.segments[0].stats.rankScore">
           <h3>{{profileData.segments[0].stats.rankScore.metadata.rankName}}</h3>
         <img :src="profileData.segments[0].stats.rankScore.metadata.iconUrl" alt class="rankIcon" />
         </div>
@@ -53,14 +53,12 @@
               <h4>Legend kills</h4>
               <p>
                 {{profileData.segments[1].stats.kills.displayValue}}
-                <span>({{profileData.segments[1].stats.kills.percentile}}%)</span>
               </p>
             </li>
               <li v-if="profileData.segments[1].stats.damage">
               <h4>Legend Damage</h4>
               <p>
                 {{profileData.segments[1].stats.damage.displayValue}}
-                <span>({{profileData.segments[1].stats.damage.percentile}}%)</span>
               </p>
             </li>
             <li v-if="profileData.segments[1].stats.winningKills">
@@ -74,22 +72,13 @@
               <h4>Season 5 kills</h4>
               <p>
                 {{profileData.segments[1].stats.season5Kills.displayValue}}
-                <span>({{profileData.segments[1].stats.season5Kills.percentile}}%)</span>
               </p>
             </li>
             <li v-if="profileData.segments[1].stats.season5Wins">
               <h4>Season 5 Wins</h4>
-              <p>
-                {{profileData.segments[1].stats.season5Wins.displayValue}}
-                <span>({{profileData.segments[1].stats.season5Wins.percentile}}%)</span>
-              </p>
             </li>
             <li v-if="profileData.segments[1].stats.season4Wins">
               <h4>Season 4 Wins</h4>
-              <p>
-                {{profileData.segments[1].stats.season4Wins.displayValue}}
-                <span>({{profileData.segments[1].stats.season4Wins.percentile}}%)</span>
-              </p>
             </li>
           </ul>
         </div>
@@ -157,6 +146,9 @@ export default {
 }
 .rankIcon {
   max-width: 200px;
+}
+#ranked {
+  text-align: center;
 }
 .container {
   background: rgba(0, 0, 0, 0.5);
